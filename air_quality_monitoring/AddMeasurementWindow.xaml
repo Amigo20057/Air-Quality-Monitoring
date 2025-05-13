@@ -1,0 +1,33 @@
+﻿<Window x:Class="air_quality_monitoring.Views.AddMeasurementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        Title="Додати вимірювання" Height="350" Width="400" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <gmap:GMapControl Name="MapControl"
+                          Grid.Column="0"
+                          Margin="10"
+                          MouseLeftButtonDown="MapControl_MouseLeftButtonDown"/>
+
+        <StackPanel Grid.Column="1" Margin="10">
+            <TextBlock Text="Місце:"/>
+            <TextBox Text="{Binding Location}" />
+
+            <TextBlock Text="Температура:" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Temperature}" />
+
+            <TextBlock Text="Вологість:" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Humidity}" />
+
+            <TextBlock Text="CO₂:" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding CO2Level}" />
+
+            <Button Content="Зберегти" Click="Ok_Click" Margin="0,20,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

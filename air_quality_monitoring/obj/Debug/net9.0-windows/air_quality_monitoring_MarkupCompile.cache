@@ -1,0 +1,20 @@
+﻿air_quality_monitoring
+
+
+winexe
+C#
+.cs
+C:\Users\denri\OneDrive\Рабочий стол\air_quality_monitoring\air_quality_monitoring\obj\Debug\net9.0-windows\
+air_quality_monitoring
+none
+false
+TRACE;DEBUG;NET;NET9_0;NETCOREAPP
+C:\Users\denri\OneDrive\Рабочий стол\air_quality_monitoring\air_quality_monitoring\App.xaml
+41745703167
+
+231746178628
+2091109232721
+AddMeasurementWindow.xaml;EditMeasurementWindow.xaml;GraphWindow.xaml;MainWindow.xaml;
+
+False
+
