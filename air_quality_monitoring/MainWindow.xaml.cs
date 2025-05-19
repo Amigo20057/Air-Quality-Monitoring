@@ -18,6 +18,7 @@ namespace air_quality_monitoring;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private bool _isDarkTheme = false;
     public MainWindow()
     {
         InitializeComponent();
@@ -36,4 +37,19 @@ public partial class MainWindow : Window
             }
         }
     }
+    private void ToggleTheme_Click(object sender, RoutedEventArgs e)
+    {
+        var dict = new ResourceDictionary();
+        if (_isDarkTheme)
+            dict.Source = new Uri("Themes/LightTheme.xaml", UriKind.Relative);
+        else
+            dict.Source = new Uri("Themes/DarkTheme.xaml", UriKind.Relative);
+
+        var mergedDicts = Application.Current.Resources.MergedDictionaries;
+        mergedDicts.Clear();
+        mergedDicts.Add(dict);
+
+        _isDarkTheme = !_isDarkTheme;
+    }
+    
 }

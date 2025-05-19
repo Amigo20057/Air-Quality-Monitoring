@@ -5,7 +5,8 @@
         xmlns:local="clr-namespace:air_quality_monitoring"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:behaviors="clr-namespace:air_quality_monitoring.Behaviors"
-        Title="Моніторинг якості повітря" Height="450" Width="1000">
+        Title="Моніторинг якості повітря" Height="450" Width="1000"
+        Background="{DynamicResource WindowBackground}" Foreground="{DynamicResource WindowForeground}">
 
     <Window.DataContext>
         <vm:MainViewModel />
@@ -42,10 +43,11 @@
             </Style.Triggers>
         </Style>
 
-        <!-- Стиль DataGrid -->
         <Style TargetType="DataGrid">
-            <Setter Property="RowBackground" Value="White"/>
-            <Setter Property="AlternatingRowBackground" Value="#F5F5F5"/>
+            <Setter Property="RowBackground" Value="{DynamicResource RowBackgroundBrush}"/>
+            <Setter Property="AlternatingRowBackground" Value="{DynamicResource AltRowBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{DynamicResource WindowForeground}"/>
+            <Setter Property="Background" Value="{DynamicResource WindowBackground}"/>
             <Setter Property="GridLinesVisibility" Value="None"/>
             <Setter Property="HeadersVisibility" Value="Column"/>
             <Setter Property="CanUserAddRows" Value="False"/>
@@ -54,6 +56,16 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="RowHeight" Value="30"/>
             <Setter Property="AutoGenerateColumns" Value="False"/>
+        </Style>
+        
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{DynamicResource ColumnHeaderBackground}" />
+            <Setter Property="Foreground" Value="{DynamicResource ColumnHeaderForeground}" />
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource ColumnHeaderBorderBrush}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
         </Style>
     </Window.Resources>
 
@@ -109,6 +121,8 @@
                 SelectedItem="{Binding SelectedSortOption, Mode=TwoWay}"
                 Margin="5,5,5,0"
                 Height="30"/>
+            <Button Content="Змінити тему" Click="ToggleTheme_Click" Height="30"/>
+
         </StackPanel>
     </Grid>
 </Window>

@@ -45,7 +45,6 @@ public partial class GraphWindow : Window
         {
             polyline.Points.Add(points[i]);
 
-            // Підпис до точки
             var label = new TextBlock
             {
                 Text = $"{_viewModel.GetSelectedValue(rawData[i]):0.##}\n{rawData[i].Location}",
