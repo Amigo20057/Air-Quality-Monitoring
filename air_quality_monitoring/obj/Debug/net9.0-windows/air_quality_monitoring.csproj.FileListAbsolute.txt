@@ -45,3 +45,4 @@ C:\Users\denri\OneDrive\Рабочий стол\air_quality_monitoring\air_quali
 C:\Users\denri\OneDrive\Рабочий стол\air_quality_monitoring\air_quality_monitoring\bin\Debug\net9.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\denri\OneDrive\Рабочий стол\air_quality_monitoring\air_quality_monitoring\obj\Debug\net9.0-windows\air_qual.2FA18CB5.Up2Date
 C:\Users\denri\OneDrive\Рабочий стол\air_quality_monitoring\air_quality_monitoring\bin\Debug\net9.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\denri\OneDrive\Рабочий стол\air_quality_monitoring\air_quality_monitoring\obj\Debug\net9.0-windows\air_quality_monitoring.sourcelink.json

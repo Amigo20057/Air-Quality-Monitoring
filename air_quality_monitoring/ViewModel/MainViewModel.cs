@@ -17,7 +17,7 @@ public class MainViewModel : ViewModelBase
     private readonly IFileService _fileService;
 
     public ObservableCollection<AirMeasurement> Measurements { get; set; }
-    public ObservableCollection<AirMeasurement> SelectedMeasurements { get; set; } = new ObservableCollection<AirMeasurement>(); // нова властивість
+    public ObservableCollection<AirMeasurement> SelectedMeasurements { get; set; } = new ObservableCollection<AirMeasurement>(); 
 
     private AirMeasurement? _selectedMeasurement;
     public AirMeasurement? SelectedMeasurement
@@ -29,7 +29,29 @@ public class MainViewModel : ViewModelBase
             OnPropertyChanged(nameof(SelectedMeasurement));
         }
     }
+    
+    private string _selectedSortOption;
+    public string SelectedSortOption
+    {
+        get => _selectedSortOption;
+        set
+        {
+            _selectedSortOption = value;
+            OnPropertyChanged(nameof(SelectedSortOption));
+            SortMeasurements(); 
+        }
+    }
 
+    public List<string> SortOptions { get; } = new List<string>
+    {
+        "Дата ↑",
+        "Дата ↓",
+        "Локація A→Z",
+        "Локація Z→A",
+        "CO₂ ↑",
+        "CO₂ ↓"
+    };
+    
     public ICommand ShowGraphCommand { get; }
     public ICommand AddCommand { get; }
     public ICommand RemoveCommand { get; }
@@ -157,11 +179,52 @@ public class MainViewModel : ViewModelBase
         }
 
         var merged = first + second;
+        _measurementService.Add(merged);
         Measurements.Add(merged);
 
+        _measurementService.Remove(first);
+        _measurementService.Remove(second);
         Measurements.Remove(first);
         Measurements.Remove(second);
+        
 
         MessageBox.Show("Записи об'єднано!", "Інфо", MessageBoxButton.OK, MessageBoxImage.Information);
+    }
+    
+    private void SortMeasurements()
+    {
+        var items = Measurements.ToList();
+
+        IEnumerable<AirMeasurement> sorted = items;
+
+        switch (SelectedSortOption)
+        {
+            case "Дата ↑":
+                sorted = items.OrderBy(m => m.Timestamp);
+                break;
+            case "Дата ↓":
+                sorted = items.OrderByDescending(m => m.Timestamp);
+                break;
+            case "Локація A→Z":
+                sorted = items.OrderBy(m => m.Location);
+                break;
+            case "Локація Z→A":
+                sorted = items.OrderByDescending(m => m.Location);
+                break;
+            case "CO₂ ↑":
+                sorted = items.OrderBy(m => m.CO2Level);
+                break;
+            case "CO₂ ↓":
+                sorted = items.OrderByDescending(m => m.CO2Level);
+                break;
+            default:
+                return;
+        }
+
+        Measurements.Clear();
+        foreach (var item in sorted)
+        {
+            Measurements.Add(item);
+        }
     }
 }

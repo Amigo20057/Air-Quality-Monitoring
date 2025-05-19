@@ -32,7 +32,7 @@ public partial class GraphWindow : Window
 
         if (points.Count < 2) return;
 
-        DrawGrid(width, height, 5, 5); // 5 вертикальних і 5 горизонтальних ліній
+        DrawGrid(width, height, 5, 5); 
         DrawAxes(width, height);
 
         var polyline = new Polyline
@@ -48,12 +48,12 @@ public partial class GraphWindow : Window
             // Підпис до точки
             var label = new TextBlock
             {
-                Text = _viewModel.GetSelectedValue(rawData[i]).ToString("0.##"),
+                Text = $"{_viewModel.GetSelectedValue(rawData[i]):0.##}\n{rawData[i].Location}",
                 FontSize = 10,
                 Foreground = Brushes.Black
             };
             Canvas.SetLeft(label, points[i].X + 2);
-            Canvas.SetTop(label, points[i].Y - 15);
+            Canvas.SetTop(label, points[i].Y - 30);
             GraphCanvas.Children.Add(label);
         }
 

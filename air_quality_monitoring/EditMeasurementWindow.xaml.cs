@@ -8,7 +8,6 @@ namespace air_quality_monitoring.Views
         public EditMeasurementWindow(AirMeasurement measurement)
         {
             InitializeComponent();
-            // Копія об'єкта для ізольованого редагування
             DataContext = new AirMeasurement
             {
                 Location = measurement.Location,
